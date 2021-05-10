@@ -6,9 +6,13 @@ USER root
 # Install database drivers
 RUN pip install psycopg2
 # RUN pip install pyhive
-RUN echo 'deb http://cz.archive.ubuntu.com/ubuntu lucid main universe ' > /etc/apt/source.list
+# RUN echo 'deb http://cz.archive.ubuntu.com/ubuntu lucid main universe ' > /etc/apt/source.list
+# RUN apt-get install unixodbc
+RUN curl https://packages.microsoft.com/keys/microsoft.asc | apt-key add -
+RUN curl https://packages.microsoft.com/config/ubuntu/20.10/prod.list > /etc/apt/sources.list.d/mssql-release.list
 RUN apt-get update
-RUN apt-get install unixODBC
+RUN ACCEPT_EULA=Y apt-get install -y msodbcsql17
+RUN source ~/.bashrc
 RUN pip install pyodbc
 RUN pip install pymssql
 
