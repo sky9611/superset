@@ -13,6 +13,7 @@ RUN curl https://packages.microsoft.com/config/ubuntu/20.10/prod.list > /etc/apt
 RUN apt-get update
 RUN ACCEPT_EULA=Y apt-get install -y msodbcsql17
 RUN . ~/.bashrc
+RUN apt-get install -y unixodbc-dev
 RUN pip install pyodbc
 RUN pip install pymssql
 
