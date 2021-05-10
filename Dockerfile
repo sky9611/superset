@@ -13,7 +13,6 @@ RUN curl https://packages.microsoft.com/config/ubuntu/20.10/prod.list > /etc/apt
 RUN apt-get update
 RUN ACCEPT_EULA=Y apt-get install -y msodbcsql17
 RUN source ~/.bashrc
-RUN pip install pyodbc
 RUN pip install pymssql
 
 # Switch back to using the `superset` user
