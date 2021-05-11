@@ -1,4 +1,4 @@
-FROM apache/superset
+FROM amancevice/superset
 
 # Switching to root to install the required packages
 USER root
