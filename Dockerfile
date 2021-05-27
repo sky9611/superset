@@ -14,6 +14,7 @@ RUN . ~/.bashrc
 RUN apt-get install -y unixodbc-dev
 RUN pip install pyodbc
 RUN pip install pymssql
+RUN pip install Authlib
 
 # Switch back to using the `superset` user
 USER superset
