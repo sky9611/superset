@@ -16,20 +16,5 @@ RUN pip install pyodbc
 RUN pip install pymssql
 RUN pip install Authlib
 
-# Add SSH
-
-ENV SSH_PASSWD "root:Docker!"
-RUN apt-get update \
-        && apt-get install -y --no-install-recommends dialog \
-        && apt-get update \
-  && apt-get install -y --no-install-recommends openssh-server \
-  && echo "$SSH_PASSWD" | chpasswd 
-
-COPY sshd_config /etc/ssh/
-
-EXPOSE 8000 2222
-
-RUN service ssh start
-
 # Switch back to using the `superset` user
 USER superset
