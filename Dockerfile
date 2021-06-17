@@ -18,3 +18,6 @@ RUN pip install Authlib
 
 # Switch back to using the `superset` user
 USER superset
+
+RUN superset db upgrade
+RUN superset init
