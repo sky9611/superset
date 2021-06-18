@@ -20,10 +20,10 @@ RUN pip install Authlib
 # RUN chmod -x /var/lib/superset/docker-entrypoint.sh
 # CMD ["/bin/bash", "/var/lib/superset/setup.sh"]
 
-COPY ./docker-entrypoint.sh /
-RUN chmod 0755 /docker-entrypoint.sh
-ENTRYPOINT ["/docker-entrypoint.sh"]
-CMD ["gunicorn", "superset.app:create_app()"]
+# COPY ./docker-entrypoint.sh /
+# RUN chmod 0755 /docker-entrypoint.sh
+# ENTRYPOINT ["/docker-entrypoint.sh"]
+# CMD ["gunicorn", "superset.app:create_app()"]
 
 # Switch back to using the `superset` user
 USER superset
