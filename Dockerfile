@@ -17,7 +17,7 @@ RUN pip install pymssql
 RUN pip install Authlib
 
 COPY setup.sh /tmp/superset/setup.sh
-CMD ./setup.sh
+CMD /tmp/superset/setup.sh
 
 # Switch back to using the `superset` user
 USER superset
