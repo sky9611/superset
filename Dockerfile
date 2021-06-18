@@ -16,11 +16,14 @@ RUN pip install pyodbc
 RUN pip install pymssql
 RUN pip install Authlib
 
-COPY docker-entrypoint.sh /var/lib/superset/docker-entrypoint.sh
-RUN chmod -x /var/lib/superset/docker-entrypoint.sh
+# COPY docker-entrypoint.sh /var/lib/superset/docker-entrypoint.sh
+# RUN chmod -x /var/lib/superset/docker-entrypoint.sh
+# CMD ["/bin/bash", "/var/lib/superset/setup.sh"]
+
+COPY ./docker-entrypoint.sh /
+RUN chmod 0755 /docker-entrypoint.sh
 ENTRYPOINT ["/var/lib/superset/docker-entrypoint.sh"]
 CMD ["gunicorn", "superset.app:create_app()"]
-# CMD ["/bin/bash", "/var/lib/superset/setup.sh"]
 
 # Switch back to using the `superset` user
 USER superset
