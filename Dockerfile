@@ -16,7 +16,7 @@ RUN pip install pyodbc
 RUN pip install pymssql
 RUN pip install Authlib
 
-COPY docker-entrypoint /var/lib/superset/docker-entrypoint.sh
+COPY docker-entrypoint.sh /var/lib/superset/docker-entrypoint.sh
 RUN chmod -x /var/lib/superset/docker-entrypoint.sh
 ENTRYPOINT ["/var/lib/superset/docker-entrypoint.sh"]
 CMD ["gunicorn", "superset.app:create_app()"]
