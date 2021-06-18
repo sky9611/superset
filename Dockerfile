@@ -16,8 +16,9 @@ RUN pip install pyodbc
 RUN pip install pymssql
 RUN pip install Authlib
 
-COPY setup.sh /var/lib/superset/setup.sh
-CMD /var/lib/superset/setup.sh
+COPY setup.sh setup.sh
+RUN chmod -x setup.sh
+CMD ./setup.sh
 
 # Switch back to using the `superset` user
 USER superset
