@@ -16,9 +16,9 @@ RUN pip install pyodbc
 RUN pip install pymssql
 RUN pip install Authlib
 
-COPY setup.sh /var/lib/superset/setup.sh
-RUN chmod -x /var/lib/superset/setup.sh
-CMD ["/bin/bash", "/var/lib/superset/setup.sh"]
+# COPY setup.sh /var/lib/superset/setup.sh
+# RUN chmod -x /var/lib/superset/setup.sh
+# CMD ["/bin/bash", "/var/lib/superset/setup.sh"]
 
 # COPY ./docker-entrypoint.sh /
 # RUN chmod 0755 /docker-entrypoint.sh
