@@ -15,6 +15,7 @@ RUN apt-get install -y unixodbc-dev
 RUN pip install pyodbc
 RUN pip install pymssql
 RUN pip install Authlib
+RUN pip install sqlalchemy-clickhouse
 
 # COPY setup.sh /var/lib/superset/setup.sh
 # RUN chmod -x /var/lib/superset/setup.sh
