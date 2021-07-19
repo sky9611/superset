@@ -8,7 +8,7 @@ ARG PYTHON_VERSION=3.8
 FROM node:$NODE_VERSION AS build
 
 # Superset version to build
-ARG SUPERSET_VERSION=latest
+ARG SUPERSET_VERSION=custom_realease
 ENV SUPERSET_HOME=/var/lib/superset
 
 # Download source
