@@ -10,6 +10,9 @@ RUN apt-get update && apt-get install -y openssh-server \
 # Copy the sshd_config file to the /etc/ssh/ directory
 COPY sshd_config /etc/ssh/
 
+# Generate host keys
+RUN ssh-keygen -P "" -t dsa -f /etc/ssh/ssh_host_dsa_key
+
 # Open port 2222 for SSH access
 EXPOSE 80 2222
 
