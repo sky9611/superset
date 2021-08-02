@@ -41,5 +41,8 @@ RUN pip install sqlalchemy-clickhouse
 # ENTRYPOINT ["/docker-entrypoint.sh"]
 # CMD ["gunicorn", "superset.app:create_app()"]
 
+COPY init.sh /usr/local/bin/
+ENTRYPOINT ["bash", "init.sh"]
+
 # Switch back to using the `superset` user
 USER superset
