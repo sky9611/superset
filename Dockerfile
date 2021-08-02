@@ -44,5 +44,5 @@ RUN pip install sqlalchemy-clickhouse
 COPY init.sh /usr/local/bin/
 ENTRYPOINT ["bash", "init.sh"]
 
-# Switch back to using the `superset` user
-USER superset
+# # Switch back to using the `superset` user
+# USER superset
