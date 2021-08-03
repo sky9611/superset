@@ -3,19 +3,6 @@ FROM amancevice/superset
 # Switching to root to install the required packages
 USER root
 
-# Install OpenSSH and set the password for root to "Docker!". In this example, "apk add" is the install instruction for an Alpine Linux-based image.
-RUN apt-get update && apt-get install -y openssh-server \
-     && echo "root:Docker!" | chpasswd 
-
-# Copy the sshd_config file to the /etc/ssh/ directory
-COPY sshd_config /etc/ssh/
-
-# Generate host keys
-RUN ssh-keygen -P "" -t dsa -f /etc/ssh/ssh_host_dsa_key
-
-# Open port 2222 for SSH access
-EXPOSE 80 2222
-
 # Install database drivers
 RUN pip install psycopg2
 RUN pip install pyhive
@@ -41,8 +28,8 @@ RUN pip install sqlalchemy-clickhouse
 # ENTRYPOINT ["/docker-entrypoint.sh"]
 # CMD ["gunicorn", "superset.app:create_app()"]
 
-COPY init.sh /usr/local/bin/
-ENTRYPOINT ["bash", "init.sh"]
+# COPY init.sh /usr/local/bin/
+# ENTRYPOINT ["bash", "init.sh"]
 
-# # Switch back to using the `superset` user
-# USER superset
+# Switch back to using the `superset` user
+USER superset
