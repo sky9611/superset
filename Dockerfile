@@ -31,5 +31,8 @@ RUN pip install sqlalchemy-clickhouse
 # COPY init.sh /usr/local/bin/
 # ENTRYPOINT ["bash", "init.sh"]
 
+COPY wait-for-it.sh /usr/local/bin/
+RUN chmod +x /usr/local/bin/wait-for-it.sh
+
 # Switch back to using the `superset` user
 USER superset
