@@ -3,6 +3,13 @@ FROM amancevice/superset
 # Switching to root to install the required packages
 USER root
 
+# change logo
+COPY superset-logo-horiz.png /usr/local/lib/python3.8/site-packages/superset/static/assets/images/
+COPY nezha.png /usr/local/lib/python3.8/site-packages/superset/static/assets/images/
+
+# Install redis
+pip install redis
+
 # Install database drivers
 RUN pip install psycopg2
 RUN pip install pyhive
@@ -13,26 +20,8 @@ RUN ACCEPT_EULA=Y apt-get install -y msodbcsql17
 RUN . ~/.bashrc
 RUN apt-get install -y unixodbc-dev
 RUN pip install pyodbc
-RUN pip install pymssql
-RUN pip install mysqlclient
-RUN pip install pymysql
 RUN pip install Authlib
-RUN pip install sqlalchemy-clickhouse
-
-# COPY setup.sh /var/lib/superset/setup.sh
-# RUN chmod -x /var/lib/superset/setup.sh
-# CMD ["/bin/bash", "/var/lib/superset/setup.sh"]
-
-# COPY ./docker-entrypoint.sh /
-# RUN chmod 0755 /docker-entrypoint.sh
-# ENTRYPOINT ["/docker-entrypoint.sh"]
-# CMD ["gunicorn", "superset.app:create_app()"]
-
-# COPY init.sh /usr/local/bin/
-# ENTRYPOINT ["bash", "init.sh"]
-
-COPY wait-for-it.sh /usr/local/bin/
-RUN chmod +x /usr/local/bin/wait-for-it.sh
+RUN pip install azure-keyvault-secrets azure-identity
 
 # Switch back to using the `superset` user
 USER superset
