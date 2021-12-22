@@ -3,12 +3,8 @@ FROM amancevice/superset
 # Switching to root to install the required packages
 USER root
 
-# change logo
-COPY superset-logo-horiz.png /usr/local/lib/python3.8/site-packages/superset/static/assets/images/
-COPY nezha.png /usr/local/lib/python3.8/site-packages/superset/static/assets/images/
-
 # Install redis
-pip install redis
+RUN pip install redis
 
 # Install database drivers
 RUN pip install psycopg2
